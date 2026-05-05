@@ -1,0 +1,21 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 4,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "exclusive": true,
+    "include": [
+        "~/.config/waybar/modules/workspaces.jsonc",
+        "~/.config/waybar/modules/clock.jsonc"
+    ],
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": []
+}

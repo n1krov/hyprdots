@@ -1,0 +1,56 @@
+@import "themes/macchiato.css";
+
+* {
+    font-family: "Hack Nerd Font", "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+/* Modulos Generales */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background-color: @base;
+    border-radius: 12px;
+    padding: 0 12px;
+    margin: 0 4px;
+    border: 2px solid @surface0;
+}
+
+/* Workspaces */
+#workspaces button {
+    color: @subtext0;
+    padding: 0 6px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: @surface0;
+    color: @text;
+}
+
+#workspaces button.active {
+    background: @blue;
+    color: @base;
+}
+
+#workspaces button.urgent {
+    background: @red;
+    color: @base;
+}
+
+/* Clock */
+#clock {
+    color: @lavender;
+    padding: 0 14px;
+}

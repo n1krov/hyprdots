@@ -1,0 +1,46 @@
+# Configuración de Swaylock con efectos
+# ~/.config/swaylock/config
+
+# Opciones visuales
+screenshots
+effect-blur=7x5
+effect-vignette=0.5:0.5
+
+# Ocultar el cursor y otros elementos
+indicator
+clock
+timestr=%H:%M
+datestr=%a, %d de %b
+
+# Estilo
+indicator-radius=100
+indicator-thickness=7
+indicator-x-position=960
+indicator-y-position=540
+
+# Colores de la interfaz (Estilo Hacker/Cyber)
+ring-color=00ff99ee
+inside-color=1a1a1aee
+key-hl-color=33ccffee
+line-color=00000000
+
+# Anillos de estado
+ring-clear-color=cc3333ee
+ring-caps-lock-color=ffcc00ee
+ring-ver-color=33ccffee
+ring-wrong-color=ff3333ee
+inside-clear-color=1a1a1aee
+inside-caps-lock-color=1a1a1aee
+inside-ver-color=1a1a1aee
+inside-wrong-color=1a1a1aee
+
+# Texto
+text-color=ffffff
+text-clear-color=ffffff
+text-caps-lock-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
+
+# Opciones adicionales
+ignore-empty-password
+show-failed-attempts
