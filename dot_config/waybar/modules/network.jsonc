@@ -1,0 +1,10 @@
+{
+    "network": {
+        "format-wifi": " {essid} ({ipaddr})",
+        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰖪 Disconnected",
+        "tooltip-format": "󰩟 {ipaddr}/{cidr}\n󱘖 {gwaddr}\n󰀂 {ifname} via {gwaddr}\n {essid} ({signalStrength}%)",
+        "on-click": "nm-connection-editor"
+    }
+}

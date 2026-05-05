@@ -2,11 +2,9 @@
 
 * {
     font-family: "Hack Nerd Font", "Inter", sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     min-height: 0;
-    border: none;
-    border-radius: 0;
 }
 
 window#waybar {
@@ -20,16 +18,16 @@ window#waybar {
 .modules-right > widget > * {
     background-color: @base;
     border-radius: 12px;
-    padding: 0 12px;
-    margin: 0 4px;
+    padding: 0 8px;
+    margin: 0 2px;
     border: 2px solid @surface0;
 }
 
 /* Workspaces */
 #workspaces button {
     color: @subtext0;
-    padding: 0 6px;
-    margin: 4px 2px;
+    padding: 0 4px;
+    margin: 2px 1px;
     border-radius: 8px;
     transition: all 0.2s ease;
 }
@@ -52,5 +50,84 @@ window#waybar {
 /* Clock */
 #clock {
     color: @lavender;
-    padding: 0 14px;
+}
+
+/* PulseAudio */
+#pulseaudio {
+    color: @yellow;
+}
+
+#pulseaudio.muted {
+    color: @red;
+}
+
+/* Network */
+#network {
+    color: @teal;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+/* Backlight */
+#backlight {
+    color: @peach;
+}
+
+/* Battery */
+#battery {
+    color: @green;
+}
+
+#battery.warning {
+    color: @maroon;
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* CPU */
+#cpu {
+    color: @blue;
+}
+
+/* Power Profiles */
+#power-profiles-daemon {
+    color: @peach;
+}
+
+#power-profiles-daemon.performance {
+    color: @red;
+}
+
+#power-profiles-daemon.balanced {
+    color: @peach;
+}
+
+#power-profiles-daemon.power-saver {
+    color: @green;
+}
+
+/* Memory */
+#memory {
+    color: @sky;
+}
+
+/* Tray */
+#tray {
+    padding: 0 8px;
+}
+
+@keyframes blink {
+    to {
+        background-color: @red;
+        color: @base;
+    }
 }

@@ -37,10 +37,10 @@ Puedes instalar la mayoría de estos paquetes desde los repositorios oficiales y
 
 ```bash
 # Paquetes oficiales
-sudo pacman -S hyprland waybar pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprlock hypridle chezmoi
+sudo pacman -S hyprland waybar pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprlock hypridle chezmoi hyprshot awww wofi
 
 # Paquetes AUR (usando yay)
-yay -S rofi-wayland swww hyprshot
+yay -S hyprlock-effects-git
 ```
 
 ---
