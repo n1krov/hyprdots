@@ -85,6 +85,9 @@ git commit -m "Actualizando configuración de Hyprland"
 git push
 ```
 
+> Nota importante
+En .config/hypr/wallpapers/ colocar las imágenes que quieras usar como fondo. Si no las pones, no funcionará el cambio de fondo de pantalla.
+
 ---
 
 ## 🎨 Componentes Configurados
