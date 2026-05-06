@@ -33,14 +33,12 @@ Puedes instalar la mayoría de estos paquetes desde los repositorios oficiales y
 - `hyprlock` e `hypridle`: Pantalla de bloqueo y gestión de inactividad (apagado de pantalla).
 - `chezmoi`: El gestor de dotfiles.
 
-### Comando Rápido de Instalación (Ejemplo)
+### 🚀 Instalación Rápida de Dependencias
+
+Antes de aplicar los dotfiles, ejecutá este comando para instalar todo lo necesario:
 
 ```bash
-# Paquetes oficiales
-sudo pacman -S hyprland waybar pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprlock hypridle chezmoi hyprshot awww wofi
-
-# Paquetes AUR (usando yay)
-yay -S hyprlock-effects-git
+sudo pacman -S --needed hyprland waybar pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprshot swww wofi chezmoi kitty btop
 ```
 
 ---
@@ -55,42 +53,39 @@ Si es la primera vez que usas chezmoi en la máquina, inicialízalo especificand
 ```bash
 # Si tienes el repositorio subido a tu GitHub
 chezmoi init https://github.com/tu-usuario/hyprland-desktop.git
-
-# Si tienes la carpeta en local (ej. en ~/programs/hyprland-desktop)
-# Puedes agregarlo a chezmoi con:
-chezmoi init
-chezmoi add ~/.config/hypr/hyprland.conf
-# (etc.)
 ```
 
-*(Nota: La estructura de este repo está armada para que los archivos estén dentro de la carpeta `dot_config`, lo que chezmoi traduce como `~/.config` en tu sistema).*
+### 2. Aplicar la configuración
+Una vez inicializado, puedes ver qué cambios se aplicarían:
 
-### 2. Aplicar las configuraciones
-Una vez que el repositorio está inicializado en tu máquina, aplica los cambios para que se copien a sus destinos reales:
+```bash
+chezmoi diff
+```
+
+Y si estás de acuerdo, aplícalos:
 
 ```bash
 chezmoi apply -v
 ```
 
-Esto copiará de forma segura los archivos de configuración de Hyprland, Waybar y demás herramientas a tu directorio `~/.config/`.
+---
 
-### 3. Actualizar configuraciones
-Si en el futuro haces un cambio local en tu `~/.config/hypr/hyprland.conf`, debes añadirlo a chezmoi y actualizar el repositorio:
+## ⌨️ Atajos de Teclado Principales
 
-```bash
-chezmoi add ~/.config/hypr/hyprland.conf
-chezmoi cd
-git add .
-git commit -m "Actualizando configuración de Hyprland"
-git push
-```
-
-> Nota importante
-En .config/hypr/wallpapers/ colocar las imágenes que quieras usar como fondo. Si no las pones, no funcionará el cambio de fondo de pantalla.
+- `SUPER + RETURN`: Abrir Terminal (Kitty)
+- `SUPER + W`: Cerrar ventana activa
+- `SUPER + L`: Bloquear pantalla (Hyprlock)
+- `SUPER + R`: Lanzador de aplicaciones (Wofi/Rofi)
+- `SUPER + E`: Explorador de archivos (Dolphin)
+- `SUPER + V`: Alternar modo flotante
+- `SUPER + F`: Pantalla completa
+- `ALT + B`: Cambiar fondo de pantalla aleatoriamente
+- `PRINT`: Captura de pantalla completa
+- `SUPER + SHIFT + S`: Captura de pantalla de región (al portapapeles)
 
 ---
 
-## 🎨 Componentes Configurados
+## 🎨 Personalización
 
-- **Hyprland**: Atajos de teclado, reglas de ventanas, animaciones personalizadas y carga de inicio (`autostart`).
-- **Waybar**: Un diseño limpio con módulos de red, batería, reloj y espacios de trabajo.
+Las configuraciones están organizadas de forma modular en `dot_config/hypr/conf/`.
+Puedes ajustar los colores editando los archivos de temas en `dot_config/waybar/themes/`.
