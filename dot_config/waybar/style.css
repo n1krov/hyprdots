@@ -12,28 +12,37 @@ window#waybar {
     color: @text;
 }
 
-/* Modulos Generales */
-.modules-left > widget > *,
-.modules-center > widget > *,
-.modules-right > widget > * {
-    background-color: @base;
+/* Estilo Elegante Grisáceo Adaptable */
+.modules-left>widget>*,
+.modules-center>widget>*,
+.modules-right>widget>* {
+    background: rgba(36, 39, 58, 0.9);
+    /* Gris oscuro con leve transparencia */
     border-radius: 12px;
-    padding: 0 8px;
-    margin: 0 2px;
-    border: 2px solid @surface0;
+    padding: 0 16px;
+    /* Padding generoso para iconos */
+    margin: 0px 4px;
+    border: 1px solid rgba(202, 211, 245, 0.1);
+    transition: all 0.3s ease;
+}
+
+.modules-left>widget>*:hover,
+.modules-center>widget>*:hover,
+.modules-right>widget>*:hover {
+    background: rgba(54, 58, 79, 0.95);
 }
 
 /* Workspaces */
 #workspaces button {
     color: @subtext0;
-    padding: 0 4px;
-    margin: 2px 1px;
+    padding: 0 6px;
+    margin: 4px 2px;
     border-radius: 8px;
     transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    background: @surface0;
+    background: rgba(202, 211, 245, 0.589);
     color: @text;
 }
 
@@ -47,12 +56,23 @@ window#waybar {
     color: @base;
 }
 
-/* Clock */
+/* Estilización de Módulos */
+#clock,
+#pulseaudio,
+#network,
+#backlight,
+#battery,
+#cpu,
+#memory,
+#power-profiles-daemon {
+    padding: 0 12px;
+}
+
+/* Colores */
 #clock {
     color: @lavender;
 }
 
-/* PulseAudio */
 #pulseaudio {
     color: @yellow;
 }
@@ -61,7 +81,6 @@ window#waybar {
     color: @red;
 }
 
-/* Network */
 #network {
     color: @teal;
 }
@@ -70,12 +89,10 @@ window#waybar {
     color: @red;
 }
 
-/* Backlight */
 #backlight {
     color: @peach;
 }
 
-/* Battery */
 #battery {
     color: @green;
 }
@@ -93,12 +110,14 @@ window#waybar {
     animation-direction: alternate;
 }
 
-/* CPU */
 #cpu {
     color: @blue;
 }
 
-/* Power Profiles */
+#memory {
+    color: @sky;
+}
+
 #power-profiles-daemon {
     color: @peach;
 }
@@ -115,14 +134,9 @@ window#waybar {
     color: @green;
 }
 
-/* Memory */
-#memory {
-    color: @sky;
-}
-
 /* Tray */
 #tray {
-    padding: 0 8px;
+    padding: 0 10px;
 }
 
 @keyframes blink {
