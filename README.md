@@ -38,7 +38,7 @@ Puedes instalar la mayoría de estos paquetes desde los repositorios oficiales y
 Antes de aplicar los dotfiles, ejecutá este comando para instalar todo lo necesario:
 
 ```bash
-sudo pacman -S --needed hyprland waybar pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprshot swww wofi chezmoi kitty btop
+sudo pacman -S --needed hyprland waybar hyprlock pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprshot swww wofi chezmoi kitty rtop
 ```
 
 ---
