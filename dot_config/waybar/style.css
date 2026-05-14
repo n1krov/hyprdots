@@ -1,4 +1,5 @@
-@import "themes/macchiato.css";
+/* Importar colores dinámicos de Wallust */
+@import "../../.cache/wallust/waybar.css";
 
 * {
     font-family: "Hack Nerd Font", "Inter", sans-serif;
@@ -9,27 +10,26 @@
 
 window#waybar {
     background: transparent;
-    color: @text;
+    color: @foreground;
 }
 
 /* Estilo Elegante Grisáceo Adaptable */
-.modules-left>widget>*,
-.modules-center>widget>*,
-.modules-right>widget>* {
-    background: rgba(36, 39, 58, 0.9);
-    /* Gris oscuro con leve transparencia */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: @bg_rgba;
     border-radius: 12px;
     padding: 0 16px;
-    /* Padding generoso para iconos */
-    margin: 0px 4px;
-    border: 1px solid rgba(202, 211, 245, 0.1);
+    margin: 4px 4px;
+    border: 1px solid @accent_rgba;
     transition: all 0.3s ease;
 }
 
-.modules-left>widget>*:hover,
-.modules-center>widget>*:hover,
-.modules-right>widget>*:hover {
-    background: rgba(54, 58, 79, 0.95);
+.modules-left > widget > *:hover,
+.modules-center > widget > *:hover,
+.modules-right > widget > *:hover {
+    background: @color4;
+    color: @background;
 }
 
 /* Workspaces */
@@ -42,106 +42,36 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: rgba(202, 211, 245, 0.589);
-    color: @text;
+    background: @accent_hover;
+    color: @foreground;
 }
 
 #workspaces button.active {
-    background: @blue;
-    color: @base;
+    background: @color4;
+    color: @background;
 }
 
 #workspaces button.urgent {
-    background: @red;
-    color: @base;
+    background: @color1;
+    color: @foreground;
 }
 
-/* Estilización de Módulos */
-#clock,
-#pulseaudio,
-#network,
-#backlight,
-#battery,
-#cpu,
-#memory,
-#power-profiles-daemon {
-    padding: 0 12px;
-}
+/* Módulos con colores dinámicos */
+#clock { color: @color4; }
+#pulseaudio { color: @color3; }
+#pulseaudio.muted { color: @color1; }
+#network { color: @color6; }
+#network.disconnected { color: @color1; }
+#backlight { color: @color5; }
+#battery { color: @color2; }
+#battery.warning { color: @color3; }
+#battery.critical:not(.charging) { color: @color1; }
 
-/* Colores */
-#clock {
-    color: @lavender;
-}
-
-#pulseaudio {
-    color: @yellow;
-}
-
-#pulseaudio.muted {
-    color: @red;
-}
-
-#network {
-    color: @teal;
-}
-
-#network.disconnected {
-    color: @red;
-}
-
-#backlight {
-    color: @peach;
-}
-
-#battery {
-    color: @green;
-}
-
-#battery.warning {
-    color: @maroon;
-}
-
-#battery.critical:not(.charging) {
-    color: @red;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#cpu {
-    color: @blue;
-}
-
-#memory {
-    color: @sky;
-}
-
-#power-profiles-daemon {
-    color: @peach;
-}
-
-#power-profiles-daemon.performance {
-    color: @red;
-}
-
-#power-profiles-daemon.balanced {
-    color: @peach;
-}
-
-#power-profiles-daemon.power-saver {
-    color: @green;
-}
+#cpu { color: @color4; }
+#memory { color: @color5; }
+#power-profiles-daemon { color: @color3; }
 
 /* Tray */
 #tray {
     padding: 0 10px;
-}
-
-@keyframes blink {
-    to {
-        background-color: @red;
-        color: @base;
-    }
 }

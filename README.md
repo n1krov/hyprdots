@@ -1,91 +1,76 @@
-# Hyprland Desktop
+# Hyprland Desktop (Dynamic Rice)
 
-Este repositorio contiene los archivos de configuración (dotfiles) para armar un entorno de escritorio en **Hyprland** desde cero. Está diseñado específicamente para **Arch Linux** y utiliza **chezmoi** para gestionar las configuraciones de manera limpia y replicable.
+Este repositorio contiene los archivos de configuración (dotfiles) para un entorno de escritorio en **Hyprland** altamente dinámico y estético. Utiliza **Wallust** para generar paletas de colores que reaccionan automáticamente al fondo de pantalla.
 
-## 📦 Requisitos Previos
+## 📦 Instalación
 
-Antes de aplicar estas configuraciones, debes instalar los programas principales en tu sistema Arch Linux.
+Sigue estos pasos para replicar el entorno en una instalación limpia de **Arch Linux**.
 
-### Programas y Herramientas a Instalar
-
-Puedes instalar la mayoría de estos paquetes desde los repositorios oficiales y AUR (usando un helper como `yay` o `paru`).
-
-**Núcleo:**
-- `hyprland`: El compositor Wayland.
-- `waybar`: La barra de estado superior.
-
-**Sesión y Utilidades del Sistema:**
-- `pipewire`, `wireplumber`, `pipewire-audio`, `pipewire-alsa`, `pipewire-pulse`: Servidor de audio moderno.
-- `polkit-kde-agent`: Agente de autenticación gráfica para pedir contraseñas.
-- `network-manager-applet`: Icono de red en la barra (`nm-applet`).
-- `brightnessctl`: Utilidad para controlar el brillo en laptops.
-
-**Interfaz y Apariencia:**
-- `rofi-wayland`: Lanzador de aplicaciones dinámico.
-- `swww`: Demonio ultrarrápido para manejar fondos de pantalla (soporta GIFs/transiciones).
-- `dunst`: Gestor de notificaciones ligero y personalizable.
-- `dolphin`: Gestor de archivos gráfico avanzado (KDE).
-
-**Herramientas Wayland (Capturas, Portapapeles, etc.):**
-- `wl-clipboard`: Para usar el portapapeles desde línea de comandos (necesario para copiar texto).
-- `grim` y `slurp`: Para realizar capturas de pantalla parciales o completas.
-- `hyprshot`: Utilidad que simplifica tomar capturas en Hyprland usando grim/slurp.
-- `hyprlock` e `hypridle`: Pantalla de bloqueo y gestión de inactividad (apagado de pantalla).
-- `chezmoi`: El gestor de dotfiles.
-
-### 🚀 Instalación Rápida de Dependencias
-
-Antes de aplicar los dotfiles, ejecutá este comando para instalar todo lo necesario:
+### 1. Instalar Dependencias (Pacman)
+Ejecuta el siguiente comando para instalar el núcleo del sistema y las utilidades esenciales:
 
 ```bash
-sudo pacman -S --needed hyprland waybar hyprlock pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse polkit-kde-agent network-manager-applet brightnessctl dunst dolphin wl-clipboard grim slurp hyprshot swww wofi chezmoi kitty rtop
+sudo pacman -S --needed \
+    hyprland waybar hyprlock hypridle \
+    pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse \
+    network-manager-applet polkit-kde-agent brightnessctl \
+    dunst dolphin kitty btop wofi \
+    wl-clipboard grim slurp hyprshot \
+    chezmoi jq unzip ttf-hack-nerd
+```
+
+### 2. Instalar Herramientas de Estética (AUR)
+Usa un helper como `yay` o `paru` para instalar las herramientas de personalización dinámica:
+
+```bash
+yay -S --needed wallust-git awww-git ttf-inter
 ```
 
 ---
 
-## 🚀 Cómo usar este repositorio con Chezmoi
+## 🚀 Configuración con Chezmoi
 
-`chezmoi` es una herramienta que te permite gestionar tus dotfiles manteniendo tu carpeta `.config` limpia.
+1. **Inicializar y aplicar:**
+   ```bash
+   chezmoi init https://github.com/tu-usuario/hyprland-desktop.git
+   chezmoi apply -v
+   ```
 
-### 1. Inicializar Chezmoi
-Si es la primera vez que usas chezmoi en la máquina, inicialízalo especificando la ruta de este repositorio (si lo has subido a GitHub):
-
-```bash
-# Si tienes el repositorio subido a tu GitHub
-chezmoi init https://github.com/tu-usuario/hyprland-desktop.git
-```
-
-### 2. Aplicar la configuración
-Una vez inicializado, puedes ver qué cambios se aplicarían:
-
-```bash
-chezmoi diff
-```
-
-Y si estás de acuerdo, aplícalos:
-
-```bash
-chezmoi apply -v
-```
+2. **Inicializar el Rice:**
+   Ejecuta el script de wallpaper por primera vez para generar la paleta de colores inicial:
+   ```bash
+   ~/.config/hypr/scripts/change_wallpaper.sh
+   ```
 
 ---
 
 ## ⌨️ Atajos de Teclado Principales
 
-- `SUPER + RETURN`: Abrir Terminal (Kitty)
+### Aplicaciones y Sistema
+- `SUPER + RETURN`: Terminal (Kitty)
 - `SUPER + W`: Cerrar ventana activa
-- `SUPER + L`: Bloquear pantalla (Hyprlock)
-- `SUPER + R`: Lanzador de aplicaciones (Wofi/Rofi)
+- `SUPER + R`: Lanzador de aplicaciones (Wofi)
 - `SUPER + E`: Explorador de archivos (Dolphin)
-- `SUPER + V`: Alternar modo flotante
+- `SUPER + L`: Bloquear pantalla (Hyprlock)
+- `ALT + B`: Cambiar wallpaper (Dinámico con Wallust)
+- `SUPER + SHIFT + R`: Recargar Waybar (Aplica cambios de CSS)
+
+### Gestión de Ventanas
+- `SUPER + hjkl`: Cambiar el foco
+- `SUPER + SHIFT + hjkl`: Redimensionar ventana
+- `SUPER + CTRL + hjkl`: Mover ventana
+- `SUPER + ALT + hjkl`: Intercambiar posición de ventanas (Swap)
 - `SUPER + F`: Pantalla completa
-- `ALT + B`: Cambiar fondo de pantalla aleatoriamente
+- `SUPER + V`: Alternar modo flotante
+
+### Capturas (Hyprshot)
 - `PRINT`: Captura de pantalla completa
-- `SUPER + SHIFT + S`: Captura de pantalla de región (al portapapeles)
+- `SUPER + PRINT`: Captura de ventana activa
+- `SUPER + SHIFT + PRINT`: Captura de región
 
 ---
 
-## 🎨 Personalización
-
-Las configuraciones están organizadas de forma modular en `dot_config/hypr/conf/`.
-Puedes ajustar los colores editando los archivos de temas en `dot_config/waybar/themes/`.
+## 🎨 Características del Rice
+- **Glassmorphism:** Waybar con efecto de cristal esmerilado y desenfoque real.
+- **Dynamic Colors:** Los colores de la barra, bordes y acentos cambian según el wallpaper usando Wallust.
+- **Modularidad:** Configuraciones divididas en `~/.config/hypr/conf/` para fácil mantenimiento.

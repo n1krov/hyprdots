@@ -1,0 +1,7 @@
+# wallust 3.0+ configuration
+backend = "full"
+color_space = "lab"
+threshold = 20
+
+[templates]
+waybar = { src = "waybar.css", dst = "~/.cache/wallust/waybar.css" }
